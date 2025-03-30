@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Compiler</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #353434;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            font-size: 1rem;
+            resize: none;
+        }
+        .btn-compile {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2rem;
+            background-color: #353434;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            margin-top: 20px;
+        }
+        .btn-compile:hover {
+            background-color: #353434;  /* ff73ab */
+        }
+        .output {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+        .output h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .output pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #e9ecef;
+            font-size: 1rem;
+            color: #333;
+        }
+        .help-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 15px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .help-btn:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Arithmetic Compiler
+                <button class="help-btn" onclick="window.location.href='/help'">Help</button>
+            </div>
+            <div class="card-body">
+                <textarea id="code" placeholder="Enter your code (e.g., add(3, 6))"></textarea>
+                <button class="btn-compile" onclick="compileCode()">Compile</button>
+
+                <div class="output">
+                    <h2>Output</h2>
+                    <pre id="result">Result will appear here...</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function compileCode() {
+            const code = document.getElementById('code').value;
+            const resultElement = document.getElementById('result');
+
+            resultElement.innerHTML = "Compiling...";
+
+            try {
+                const response = await fetch('/compile', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ code }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    resultElement.innerHTML = `Result: ${data.result}`;
+                } else {
+                    resultElement.innerHTML = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                resultElement.innerHTML = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

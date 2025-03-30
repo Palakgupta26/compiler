@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compiler Help</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .back-btn {
+            padding: 8px 16px;
+            background: #353434;/*353434*/
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .function-example {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            border-left: 4px solid #353434;
+            border-radius: 0 4px 4px 0;
+        }
+        .explanation {
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 25px;
+        }
+        h1 {
+            color: #353434;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="back-btn" onclick="window.location.href='/'">← Back to Compiler</button>
+        
+        <h1>Compiler Help Guide</h1>
+
+        <h2>Important Notes</h2>
+        <div class="function-example">
+            • All operations must use parentheses<br>
+            • Arguments must be interger numbers <br>
+            • The input should not follow ' ; ' <br>
+            • Division by zero will return an error
+
+        </div><br>
+
+        <p>This compiler supports the following mathematical operations:</p>
+        
+        <h2>Binary Operations (two arguments)</h2>
+        <div class="function-example">
+            add(num1, num2) - Addition<br>
+            <span class="explanation">Adds two numbers together. Example: add(5, 3) returns 8</span>
+        </div>
+        <div class="function-example">
+            subtract(num1, num2) - Subtraction<br>
+            <span class="explanation">Subtracts num2 from num1. Example: subtract(10, 4) returns 6</span>
+        </div>
+        <div class="function-example">
+            multiply(num1, num2) - Multiplication<br>
+            <span class="explanation">Multiplies two numbers. Example: multiply(3, 7) returns 21</span>
+        </div>
+        <div class="function-example">
+            divide(num1, num2) - Division<br>
+            <span class="explanation">Divides num1 by num2. Example: divide(15, 3) returns 5</span>
+        </div>
+        <div class="function-example">
+            mod(num1, num2) - Modulus<br>
+            <span class="explanation">Returns the remainder after division. Example: mod(10, 3) returns 1</span>
+        </div>
+        <div class="function-example">
+            power(num1, num2) - Exponentiation<br>
+            <span class="explanation">Raises num1 to the power of num2. Example: power(2, 4) returns 16</span>
+        </div>
+        
+        <h2>Unary Operations (one argument)</h2>
+        <div class="function-example">
+            iseven(num) - Even number check<br>
+            <span class="explanation">Returns true if the number is divisible by 2. Example: iseven(8) returns true</span>
+        </div>
+        <div class="function-example">
+            isodd(num) - Odd number check<br>
+            <span class="explanation">Returns true if the number is not divisible by 2. Example: isodd(7) returns true</span>
+        </div>
+        
+        <h2>Usage Examples</h2>
+        <div class="function-example">
+            add(9, 11) → 20<br>
+            <span class="explanation">Calculates and then adds them: 9+11=20</span>
+        </div>
+        <div class="function-example">
+            iseven(15) → false<br>
+            <span class="explanation">Checks if 15 is even by 15%2 !==0 (false)</span>
+        </div>
+        <div class="function-example">
+            power(2, 3) → 8<br>
+            <span class="explanation">Calculates 2³ and then gives result (8) </span>
+        </div>
+    </div>
+</body>
+</html>
